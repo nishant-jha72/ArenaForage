@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(15) NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    full_name VARCHAR(100) NULL,
+    profile_picture_url VARCHAR(500) NULL,
+    role ENUM('SUPER_ADMIN', 'ADMIN', 'USER') NOT NULL DEFAULT 'USER',
+    status ENUM('ACTIVE', 'SUSPENDED', 'BANNED') NOT NULL DEFAULT 'ACTIVE',
+    is_email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+    is_phone_verified BOOLEAN NOT NULL DEFAULT FALSE,
+    last_login TIMESTAMP NULL,
+    deleted_at TIMESTAMP NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    UNIQUE KEY uk_users_username (username),
+    UNIQUE KEY uk_users_email (email),
+    UNIQUE KEY uk_users_phone (phone),
+    INDEX idx_users_role (role),
+    INDEX idx_users_status (status),
+    INDEX idx_users_deleted_at (deleted_at),
+    INDEX idx_users_created_at (created_at)
+);
