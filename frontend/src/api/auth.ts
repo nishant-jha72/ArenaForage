@@ -14,9 +14,15 @@ export interface LoginPayload {
 }
 
 export interface AuthResponse {
-  accessToken: string
-  refreshToken: string
-  user: User
+  success: boolean;
+  message: string;
+  data: {
+    user: User;
+    tokens: {
+      accessToken: string;
+      refreshToken: string;
+    };
+  };
 }
 
 /** POST /auth/register — 201 Created, 400 validation failed, 409 duplicate email/username */

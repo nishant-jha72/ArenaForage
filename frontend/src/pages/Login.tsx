@@ -22,6 +22,7 @@ export default function Login() {
     setIsSubmitting(true)
     try {
       await login({ email, password })
+
       navigate(redirectTo, { replace: true })
     } catch (err) {
       setError(getApiErrorMessage(err, 'Could not log in. Please try again.'))

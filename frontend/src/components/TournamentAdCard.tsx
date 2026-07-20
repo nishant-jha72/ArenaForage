@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { Trophy, Users, CalendarDays } from 'lucide-react'
 import type { TournamentAd } from '../types/tournament'
 
@@ -12,8 +13,13 @@ export default function TournamentAdCard({ ad }: { ad: TournamentAd }) {
     <div className="clip-panel relative overflow-hidden rounded-xl border border-ink-900/10 bg-white shadow-lg shadow-ink-900/5 dark:border-white/10 dark:bg-ink-800">
       <div className={`h-24 bg-gradient-to-br ${ad.accent} sm:h-28`}>
         <div className="flex h-full items-start justify-between p-4">
-          <span className="rounded bg-ink-900/30 px-2 py-1 font-display text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm">
-            {ad.game}
+          <span className="flex items-center gap-1.5">
+            <span className="rounded bg-ink-900/30 px-2 py-1 font-display text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm">
+              {ad.game}
+            </span>
+            <span className="rounded bg-white/15 px-2 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+              {ad.format}
+            </span>
           </span>
           {ad.status === 'live' && (
             <span className="flex items-center gap-1.5 rounded bg-white/15 px-2 py-1 text-xs font-bold text-white backdrop-blur-sm">
@@ -51,9 +57,12 @@ export default function TournamentAdCard({ ad }: { ad: TournamentAd }) {
           </div>
         </div>
 
-        <button className="mt-4 w-full rounded-md bg-brand-blue py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-hover dark:bg-brand-cyan dark:text-ink-900 dark:hover:bg-brand-cyan/80">
+        <NavLink
+          to={`/tournaments/${ad.id}`}
+          className="mt-4 block w-full rounded-md bg-brand-blue py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-brand-blue-hover dark:bg-brand-cyan dark:text-ink-900 dark:hover:bg-brand-cyan/80"
+        >
           Register Now
-        </button>
+        </NavLink>
       </div>
     </div>
   )

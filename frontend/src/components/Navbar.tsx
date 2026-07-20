@@ -66,10 +66,16 @@ export default function Navbar() {
           </button>
 
           {isAuthenticated && (
-            <span className="flex items-center gap-1.5 text-sm font-medium text-ink-700 dark:text-slate-300">
-              <UserIcon size={14} />
+            <NavLink
+              to="/profile"
+              className="flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-ink-700 transition-colors hover:text-brand-blue dark:text-slate-300 dark:hover:text-brand-cyan"
+              aria-label="Open profile"
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue dark:bg-brand-cyan/10 dark:text-brand-cyan">
+                <UserIcon size={14} />
+              </span>
               {user?.username}
-            </span>
+            </NavLink>
           )}
 
           <button
@@ -125,10 +131,16 @@ export default function Navbar() {
           </div>
 
           {isAuthenticated && (
-            <p className="mt-4 flex items-center gap-1.5 px-3 text-sm font-medium text-ink-700 dark:text-slate-300">
-              <UserIcon size={14} />
-              Signed in as {user?.username}
-            </p>
+            <NavLink
+              to="/profile"
+              onClick={() => setIsOpen(false)}
+              className="mt-4 flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-ink-700 dark:text-slate-300"
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue dark:bg-brand-cyan/10 dark:text-brand-cyan">
+                <UserIcon size={14} />
+              </span>
+              View profile — {user?.username}
+            </NavLink>
           )}
 
           <button

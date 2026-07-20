@@ -25,7 +25,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  // On first load, if a token is already stored, restore the session via /users/me.
+
   useEffect(() => {
     let cancelled = false
 
@@ -50,11 +50,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-  async function login(payload: LoginPayload) {
-    const data = await loginUser(payload)
-    tokenStorage.setTokens(data.accessToken, data.refreshToken)
-    setUser(data.user)
-  }
+async function login(payload: LoginPayload) {
+  const response = await loginUser(payload);
+  console.log(response)
+  tokenStorage.setTokens(
+    response.data.tokens.accessToken,
+    response.data.tokens.refreshToken
+  );
+  console.log("refresh Token - ", response.data.tokens.refreshToken)
+  console.log("access Token - ", response.data.tokens.accessToken)
+
+  setUser(response.data.user);
+}
 
   async function register(payload: RegisterPayload) {
     // /auth/register only creates the account (per the API), so log in right after.

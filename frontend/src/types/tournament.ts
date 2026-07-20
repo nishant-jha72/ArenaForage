@@ -2,6 +2,8 @@ export type GameTitle = 'FreeFire' | 'PUBG'
 
 export type TournamentStatus = 'live' | 'upcoming' | 'registration-open'
 
+export type TournamentFormat = 'Solo' | 'Duo' | 'Squad'
+
 export interface TournamentAd {
   id: string
   game: GameTitle
@@ -11,4 +13,6 @@ export interface TournamentAd {
   slotsLeft: number
   status: TournamentStatus
   accent: string
+  format: TournamentFormat
+  entryFee: string
 }

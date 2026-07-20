@@ -22,6 +22,8 @@ async function fetchFeaturedTournaments(): Promise<TournamentAd[]> {
       slotsLeft: 12,
       status: 'live',
       accent: 'from-brand-blue to-brand-cyan',
+      format: 'Squad',
+      entryFee: '₹200',
     },
     {
       id: 't-pubg-014',
@@ -32,6 +34,8 @@ async function fetchFeaturedTournaments(): Promise<TournamentAd[]> {
       slotsLeft: 28,
       status: 'registration-open',
       accent: 'from-brand-navy to-brand-blue',
+      format: 'Squad',
+      entryFee: '₹300',
     },
     {
       id: 't-ff-002',
@@ -42,6 +46,8 @@ async function fetchFeaturedTournaments(): Promise<TournamentAd[]> {
       slotsLeft: 40,
       status: 'upcoming',
       accent: 'from-brand-cyan to-brand-blue',
+      format: 'Solo',
+      entryFee: 'Free',
     },
   ]
 }
