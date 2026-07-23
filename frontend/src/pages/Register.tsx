@@ -58,7 +58,7 @@ export default function Register() {
   }
 
   return (
-    <section className="mx-auto flex max-w-md flex-col justify-center px-4 py-16 sm:px-6">
+    <section className="flex w-full flex-col justify-center px-4 py-16 sm:px-6">
       <h1 className="font-display text-3xl font-bold text-ink-900 dark:text-white">
         Create your account
       </h1>

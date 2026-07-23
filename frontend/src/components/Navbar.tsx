@@ -35,14 +35,14 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink-900/5 bg-white/90 backdrop-blur-md dark:border-white/5 dark:bg-ink-900/90">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav className="flex h-16 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <NavLink to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
           <span className="flex h-9 w-9 items-center justify-center rounded-md bg-brand-blue text-white">
             <Swords size={18} strokeWidth={2.5} />
           </span>
           <span className="font-display text-xl font-bold tracking-wider text-ink-900 dark:text-white">
-            ARENA<span className="text-brand-blue dark:text-brand-cyan">CIRCUIT</span>
+            ARENA<span className="text-brand-blue dark:text-brand-cyan">FORAGE</span>
           </span>
         </NavLink>
 

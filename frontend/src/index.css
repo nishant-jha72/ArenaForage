@@ -3,12 +3,45 @@
 @tailwind utilities;
 
 @layer base {
+ :root {
+  --crystal-primary: 37 99 235;
+  --crystal-primary-hover: 29 78 216;
+
+  --crystal-glow: 56 189 248;
+  --crystal-deep: 15 23 42;
+
+  --crystal-surface: 255 255 255;
+  --crystal-surface-muted: 248 250 252;
+
+  --crystal-glass: 255 255 255;
+  --crystal-border: 226 232 240;
+  --crystal-border-strong: 148 163 184;
+
+  --crystal-status-live: 34 197 94;
+  --crystal-status-upcoming: 249 115 22;
+  --crystal-status-open: 59 130 246;
+
+  --crystal-ink-950: 2 6 23;
+  --crystal-ink-900: 15 23 42;
+  --crystal-ink-800: 30 41 59;
+  --crystal-ink-700: 51 65 85;
+  --crystal-ink-600: 71 85 105;
+}
+
+  .dark {
+    --crystal-surface: #0b1220;
+    --crystal-surface-muted: #121a2e;
+    --crystal-glass: rgba(18, 26, 46, 0.72);
+    --crystal-border: rgba(255, 255, 255, 0.1);
+    --crystal-border-strong: rgba(255, 255, 255, 0.15);
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-white text-ink-900 dark:bg-ink-900 dark:text-slate-100 transition-colors duration-300;
+    @apply bg-crystal-surface text-ink-900 dark:bg-ink-900 dark:text-slate-100 transition-colors duration-300;
   }
 
   h1,
@@ -19,7 +52,7 @@
   }
 
   ::selection {
-    @apply bg-brand-cyan/30;
+    @apply bg-crystal-glow/30;
   }
 
   /* visible keyboard focus */
@@ -27,7 +60,7 @@
   button:focus-visible,
   input:focus-visible,
   textarea:focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-brand-cyan;
+    @apply outline outline-2 outline-offset-2 outline-crystal-glow;
   }
 }
 

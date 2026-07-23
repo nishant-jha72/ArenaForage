@@ -16,7 +16,7 @@ app.use(cors({ origin: env.cors.origin, credentials: true }));
 app.use(morgan(env.nodeEnv === 'development' ? 'dev' : 'combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
-app.use(generalLimiter);
+// app.use(generalLimiter);
 
 app.get('/health', (req, res) => {
   res.status(200).json({ success: true, message: 'Server is healthy' });

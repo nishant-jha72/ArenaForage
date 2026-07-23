@@ -1,5 +1,6 @@
 import { Search } from 'lucide-react'
 import type { GameTitle, TournamentFormat, TournamentStatus } from '../types/tournament'
+import { tournamentDialogue as d } from '../theme/tournament.dialogue'
 
 export interface TournamentFilterState {
   search: string
@@ -13,15 +14,9 @@ interface Props {
   onChange: (filters: TournamentFilterState) => void
 }
 
-const STATUS_LABEL: Record<TournamentStatus, string> = {
-  live: 'Live',
-  'registration-open': 'Registration Open',
-  upcoming: 'Upcoming',
-}
-
 export default function TournamentFilters({ filters, onChange }: Props) {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+    <div className={d.layout.filterBar}>
       <div className="relative flex-1">
         <Search
           size={16}
@@ -32,7 +27,7 @@ export default function TournamentFilters({ filters, onChange }: Props) {
           value={filters.search}
           onChange={(e) => onChange({ ...filters, search: e.target.value })}
           placeholder="Search tournaments…"
-          className="w-full rounded-md border border-ink-900/15 bg-white py-2.5 pl-9 pr-3 text-sm text-ink-900 focus:border-brand-blue dark:border-white/15 dark:bg-ink-800 dark:text-white dark:focus:border-brand-cyan"
+          className={d.form.input}
         />
       </div>
 
@@ -40,7 +35,7 @@ export default function TournamentFilters({ filters, onChange }: Props) {
         <select
           value={filters.game}
           onChange={(e) => onChange({ ...filters, game: e.target.value as TournamentFilterState['game'] })}
-          className="rounded-md border border-ink-900/15 bg-white px-3 py-2.5 text-sm text-ink-900 focus:border-brand-blue dark:border-white/15 dark:bg-ink-800 dark:text-white dark:focus:border-brand-cyan"
+          className={d.form.select}
         >
           <option value="All">All games</option>
           <option value="FreeFire">Free Fire</option>
@@ -49,8 +44,10 @@ export default function TournamentFilters({ filters, onChange }: Props) {
 
         <select
           value={filters.format}
-          onChange={(e) => onChange({ ...filters, format: e.target.value as TournamentFilterState['format'] })}
-          className="rounded-md border border-ink-900/15 bg-white px-3 py-2.5 text-sm text-ink-900 focus:border-brand-blue dark:border-white/15 dark:bg-ink-800 dark:text-white dark:focus:border-brand-cyan"
+          onChange={(e) =>
+            onChange({ ...filters, format: e.target.value as TournamentFilterState['format'] })
+          }
+          className={d.form.select}
         >
           <option value="All">All formats</option>
           <option value="Solo">Solo</option>
@@ -60,13 +57,15 @@ export default function TournamentFilters({ filters, onChange }: Props) {
 
         <select
           value={filters.status}
-          onChange={(e) => onChange({ ...filters, status: e.target.value as TournamentFilterState['status'] })}
-          className="hidden rounded-md border border-ink-900/15 bg-white px-3 py-2.5 text-sm text-ink-900 focus:border-brand-blue sm:block dark:border-white/15 dark:bg-ink-800 dark:text-white dark:focus:border-brand-cyan"
+          onChange={(e) =>
+            onChange({ ...filters, status: e.target.value as TournamentFilterState['status'] })
+          }
+          className={`hidden sm:block ${d.form.select}`}
         >
           <option value="All">All statuses</option>
-          {Object.entries(STATUS_LABEL).map(([value, label]) => (
+          {(Object.keys(d.status) as TournamentStatus[]).map((value) => (
             <option key={value} value={value}>
-              {label}
+              {d.status[value].filterLabel}
             </option>
           ))}
         </select>

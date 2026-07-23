@@ -50,14 +50,25 @@ export function resetPassword(token: string, password: string) {
   return apiClient.post('/auth/reset-password', { token, password })
 }
 
+/** Shared API envelope used by the backend ApiResponse helper. */
+interface ApiEnvelope<T> {
+  success: boolean
+  message: string
+  data: T
+}
+
 /** GET /users/me — requires bearer token */
 export function getCurrentUser() {
-  return apiClient.get<User>('/users/me').then((res) => res.data)
+  return apiClient
+    .get<ApiEnvelope<User>>('/users/me')
+    .then((res) => res.data.data)
 }
 
 /** GET /users/check-username?username=... — debounce 300–500ms on the caller side */
 export function checkUsernameAvailable(username: string) {
   return apiClient
-    .get<{ available: boolean }>('/users/check-username', { params: { username } })
-    .then((res) => res.data)
+    .get<ApiEnvelope<{ available: boolean }>>('/users/check-username', {
+      params: { username },
+    })
+    .then((res) => res.data.data)
 }

@@ -32,7 +32,7 @@ export default function Login() {
   }
 
   return (
-    <section className="mx-auto flex max-w-md flex-col justify-center px-4 py-16 sm:px-6">
+    <section className="flex  flex-col justify-center px-4 py-16 sm:px-6">
       <h1 className="font-display text-3xl font-bold text-ink-900 dark:text-white">Log in</h1>
       <p className="mt-2 text-sm text-ink-700 dark:text-slate-400">
         Access your squad dashboard and registered tournaments.

@@ -26,7 +26,7 @@ export default function ForgotPassword() {
 
   if (sent) {
     return (
-      <section className="mx-auto flex max-w-md flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
+      <section className="flex w-full flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
         <MailCheck size={36} className="text-brand-blue dark:text-brand-cyan" />
         <h1 className="mt-4 font-display text-2xl font-bold text-ink-900 dark:text-white">
           Check your inbox
@@ -43,7 +43,7 @@ export default function ForgotPassword() {
   }
 
   return (
-    <section className="mx-auto flex max-w-md flex-col justify-center px-4 py-16 sm:px-6">
+    <section className="flex w-full flex-col justify-center px-4 py-16 sm:px-6">
       <h1 className="font-display text-3xl font-bold text-ink-900 dark:text-white">
         Reset your password
       </h1>

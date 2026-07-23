@@ -42,7 +42,7 @@ export default function ResetPassword() {
 
   if (!token) {
     return (
-      <section className="mx-auto flex max-w-md flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
+      <section className="flex w-full flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
         <AlertTriangle size={32} className="text-red-500" />
         <h1 className="mt-4 font-display text-2xl font-bold text-ink-900 dark:text-white">
           Invalid reset link
@@ -62,7 +62,7 @@ export default function ResetPassword() {
 
   if (done) {
     return (
-      <section className="mx-auto flex max-w-md flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
+      <section className="flex w-full flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
         <CheckCircle2 size={32} className="text-brand-blue dark:text-brand-cyan" />
         <h1 className="mt-4 font-display text-2xl font-bold text-ink-900 dark:text-white">
           Password reset
@@ -73,7 +73,7 @@ export default function ResetPassword() {
   }
 
   return (
-    <section className="mx-auto flex max-w-md flex-col justify-center px-4 py-16 sm:px-6">
+    <section className="flex w-full flex-col justify-center px-4 py-16 sm:px-6">
       <h1 className="font-display text-3xl font-bold text-ink-900 dark:text-white">
         Choose a new password
       </h1>

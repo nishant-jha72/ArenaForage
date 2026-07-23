@@ -12,7 +12,7 @@ const {
 
 const router = express.Router();
 
-router.use(authLimiter);
+// router.use(authLimiter);
 
 router.post('/register', validate(registerSchema), authController.register);
 router.post('/login', validate(loginSchema), authController.login);

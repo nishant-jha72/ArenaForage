@@ -81,13 +81,21 @@ apiClient.interceptors.response.use(
     isRefreshing = true
 
     try {
-      const { data } = await axios.post<{ accessToken: string }>(
-        `${API_BASE_URL}/auth/refresh-token`,
-        { refreshToken },
-      )
-      tokenStorage.setTokens(data.accessToken, refreshToken)
-      flushQueue(data.accessToken)
-      originalRequest.headers.Authorization = `Bearer ${data.accessToken}`
+      // Backend wraps payloads as { success, message, data: { accessToken } }
+      const { data: envelope } = await axios.post<{
+        success: boolean
+        message: string
+        data: { accessToken: string }
+      }>(`${API_BASE_URL}/auth/refresh-token`, { refreshToken })
+
+      const accessToken = envelope.data?.accessToken
+      if (!accessToken) {
+        throw new Error('Refresh response missing accessToken')
+      }
+
+      tokenStorage.setTokens(accessToken, refreshToken)
+      flushQueue(accessToken)
+      originalRequest.headers.Authorization = `Bearer ${accessToken}`
       return apiClient(originalRequest)
     } catch (refreshError) {
       flushQueue(null)

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { TournamentAd } from '../types/tournament'
+import { gameAccent, tournamentDialogue } from '../theme/tournament.dialogue'
 
 /**
  * In production this calls your backend, e.g.:
@@ -11,17 +12,18 @@ import type { TournamentAd } from '../types/tournament'
  */
 async function fetchFeaturedTournaments(): Promise<TournamentAd[]> {
   await new Promise((resolve) => setTimeout(resolve, 600))
+  const accents = tournamentDialogue.accentVariants
 
   return [
     {
       id: 't-ff-001',
       game: 'FreeFire',
-      title: 'Arena Circuit — FreeFire Squad Showdown',
+      title: 'Arena Forage — FreeFire Squad Showdown',
       prizePool: '₹1,50,000',
       date: 'July 26, 2026',
       slotsLeft: 12,
       status: 'live',
-      accent: 'from-brand-blue to-brand-cyan',
+      accent: gameAccent('FreeFire'),
       format: 'Squad',
       entryFee: '₹200',
     },
@@ -33,7 +35,7 @@ async function fetchFeaturedTournaments(): Promise<TournamentAd[]> {
       date: 'August 2, 2026',
       slotsLeft: 28,
       status: 'registration-open',
-      accent: 'from-brand-navy to-brand-blue',
+      accent: gameAccent('PUBG'),
       format: 'Squad',
       entryFee: '₹300',
     },
@@ -45,7 +47,7 @@ async function fetchFeaturedTournaments(): Promise<TournamentAd[]> {
       date: 'August 9, 2026',
       slotsLeft: 40,
       status: 'upcoming',
-      accent: 'from-brand-cyan to-brand-blue',
+      accent: accents[2],
       format: 'Solo',
       entryFee: 'Free',
     },

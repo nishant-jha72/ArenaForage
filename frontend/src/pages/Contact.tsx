@@ -10,12 +10,12 @@ export default function Contact() {
   }
 
   return (
-    <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <section className="w-full px-4 py-12 sm:px-6 lg:px-8">
       <h1 className="font-display text-3xl font-bold text-ink-900 sm:text-4xl dark:text-white">
         Get in touch
       </h1>
       <p className="mt-2 max-w-xl text-sm text-ink-700 dark:text-slate-400">
-        Questions about a tournament, a payout, or partnering with Arena Circuit? Reach out.
+        Questions about a tournament, a payout, or partnering with Arena Forage? Reach out.
       </p>
 
       <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-3">
@@ -24,14 +24,14 @@ export default function Contact() {
             <Mail size={18} className="mt-0.5 text-brand-blue dark:text-brand-cyan" />
             <div>
               <p className="text-sm font-semibold text-ink-900 dark:text-white">Email</p>
-              <p className="text-sm text-ink-700 dark:text-slate-400">support@arenacircuit.gg</p>
+              <p className="text-sm text-ink-700 dark:text-slate-400">support@arenaForage.gg</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <MessageSquare size={18} className="mt-0.5 text-brand-blue dark:text-brand-cyan" />
             <div>
               <p className="text-sm font-semibold text-ink-900 dark:text-white">Discord</p>
-              <p className="text-sm text-ink-700 dark:text-slate-400">discord.gg/arenacircuit</p>
+              <p className="text-sm text-ink-700 dark:text-slate-400">discord.gg/arenaForage</p>
             </div>
           </div>
           <div className="flex items-start gap-3">

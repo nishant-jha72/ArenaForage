@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Home from './pages/Home'
-import DashboardHome from './pages/dashboardHome'
+import Home from './pages/Homepage/default-homepage/Home'
+import DashboardHome from './pages/Homepage/after-login/dashboardHome'
 import Tournaments from './pages/Tournaments'
 import Host from './pages/Host'
 import Contact from './pages/Contact'
@@ -26,7 +26,7 @@ function HomeRoute() {
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col bg-white dark:bg-ink-900">
+    <div className="flex  flex-col bg-white dark:bg-ink-900">
       <Navbar />
       <main className="flex-1">
         <Routes>

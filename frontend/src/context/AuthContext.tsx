@@ -30,7 +30,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     let cancelled = false
 
     async function bootstrap() {
-      if (!tokenStorage.getAccessToken()) {
+      // Restore session if either token is present. Expired access tokens are
+      // refreshed automatically by the axios 401 interceptor using refreshToken.
+      if (!tokenStorage.getAccessToken() && !tokenStorage.getRefreshToken()) {
         setIsLoading(false)
         return
       }
@@ -39,6 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (!cancelled) setUser(me)
       } catch {
         tokenStorage.clearTokens()
+        if (!cancelled) setUser(null)
       } finally {
         if (!cancelled) setIsLoading(false)
       }
@@ -50,18 +53,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-async function login(payload: LoginPayload) {
-  const response = await loginUser(payload);
-  console.log(response)
-  tokenStorage.setTokens(
-    response.data.tokens.accessToken,
-    response.data.tokens.refreshToken
-  );
-  console.log("refresh Token - ", response.data.tokens.refreshToken)
-  console.log("access Token - ", response.data.tokens.accessToken)
-
-  setUser(response.data.user);
-}
+  async function login(payload: LoginPayload) {
+    const response = await loginUser(payload)
+    tokenStorage.setTokens(
+      response.data.tokens.accessToken,
+      response.data.tokens.refreshToken,
+    )
+    setUser(response.data.user)
+  }
 
   async function register(payload: RegisterPayload) {
     // /auth/register only creates the account (per the API), so log in right after.
